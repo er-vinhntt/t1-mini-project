@@ -4,27 +4,59 @@
 </p>
 <h2 align="center">Team 1 - Mini Project 2024 </h2>
 
-## Description
+## Current project team members
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [er-vutk](https://github.com/er-vutk) -
+  **Trần Kim Vũ** <<vutk@tech.est-rouge.com>>
+- [er-vinhntt](https://github.com/er-vinhntt) -
+  **Nguyễn Trọng Thanh Vinh** <<vinhntt@tech.est-rouge.com>>
+- [er-anhlnt](https://github.com/er-anhlnt) -
+  **Lê Nguyễn Tiến Anh** <<anhlnt@tech.est-rouge.com>>
 
 ## Installation
 
 ```bash
 $ npm install
+$ echo "UID = $(id -u)" >> ./path-to-your_env-file
+$ echo "GID = $(id -g)" >> ./path-to-your_env-file
 ```
+
+Create two .env files: .env.development and .env.production in the format of .env.sample.
 
 ## Running the app
 
 ```bash
-# development
-$ npm run start
-
 # watch mode
-$ npm run start:dev
+$ npm run compose:dev
 
 # production mode
-$ npm run start:prod
+$ npm run compose:prod
+```
+
+## Migration
+
+```bash
+# Generate migration files with schema changes you made
+$ npm run migrate:generate -name=create_user # {TIMESTAMPT}-create_user.ts
+
+# create a new migration
+$ npm run migrate:create -name=create_user # {TIMESTAMPT}-create_user.ts
+
+# Once you have a migration to run on production,using this CLI command:
+$ npm run migrate:run
+
+# If for some reason you want to revert the changes, you can run:
+$ npm run migrate:revert
+```
+
+## Set ownership of all a folder's subfolders and files (linux)
+
+```bash
+$ ls -a
+drwxr-xr-x   8 root       root         4096 Jan 21 09:59 dist
+
+$ npm run chown
+drwxr-xr-x   8 er-vinhntt er-vinhntt   4096 Jan 21 10:00 dist
 ```
 
 ## Test

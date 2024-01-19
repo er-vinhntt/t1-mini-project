@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  car_rent_backend:
+    container_name: car_rent_backend # If you want to make changes, edit all the words car_rent_backend in package.json as well
+    user: '${UID}:${GID}' # You must define it in the env file.
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: development # production / development
+    command: npm run start:dev # dev | prod
+    env_file:
+      - .env.development
+      # - .env.production
+    volumes:
+      - .:/usr/src/app # Dev only
+    ports:
+      - '3000:3000'
+
+  car_rent_db:
+    container_name: car_rent_db
+    image: mysql:8.2.0
+    restart: always
+    ports:
+      - '3306:3306'
+    environment:
+      - 'MYSQL_DATABASE=${DB_NAME}'
+      - 'MYSQL_USER=${DB_USER}'
+      - 'MYSQL_PASSWORD=${DB_PASSWORD}'
+      - 'MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}'
+    volumes:
+      - car_db:/var/lib/mysql
+
+volumes:
+  car_db:
