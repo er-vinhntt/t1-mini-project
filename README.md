@@ -49,6 +49,15 @@ $ npm run migrate:run
 $ npm run migrate:revert
 ```
 
+## Database seeding
+
+```bash
+$ npm run seed:create -name=user
+$ npm run seed:run
+```
+
+> **Note:** The seed files will be processed in alphabetical order based on their filenames. So, please ensure that they are numbered to maintain their sequence.
+
 ## Set ownership of all a folder's subfolders and files (linux)
 
 ```bash

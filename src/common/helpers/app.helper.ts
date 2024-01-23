@@ -3,11 +3,11 @@ import { join } from 'path';
 
 export class AppHelper {
   static isDev(): boolean {
-    return process.env.NODE_ENV.startsWith('dev');
+    return !!process.env.NODE_ENV?.startsWith('dev');
   }
 
   static isProd(): boolean {
-    return process.env.NODE_ENV.startsWith('prod');
+    return !!process.env.NODE_ENV?.startsWith('prod');
   }
 
   static getRootDir(): string {
